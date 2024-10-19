@@ -13,7 +13,9 @@
     </head>
     <body>
 
-        <button class="btn btn-success">Botão</button>
+        @hasSection ('body')
+            @yield('body')
+        @endif
 
         <!-- Script -->
         @vite(['resources/js/app.js'])
