@@ -2,19 +2,20 @@
 
 namespace App\Livewire;
 
+use App\Models\Empresa;
+
 use App\Models\DadosLeitura;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class Motor extends Component
 {
-    #[Computed]
-    public function dados()
+    
+    public $id;
+
+    public function mostraCorrente()
     {
-        $dados = DadosLeitura::where('motor_id', 1)->latest()->first();
-        dd($dados);
-        // return DadosLeitura::latest()->first();
-        return $dados;
+        return DadosLeitura::where('motor_id', $this->id)->latest()->first();
     }
     
     public function render()

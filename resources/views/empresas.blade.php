@@ -1,5 +1,5 @@
 @extends('app')
 
 @section('body')
-    <livewire:motor />
+    <livewire:motores />
 @endsection

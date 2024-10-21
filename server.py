@@ -7,7 +7,7 @@ url = 'http://127.0.0.1:8000/api/dados-leitura'
 
 while True:
     
-    for x in range(1, 5):
+    for x in range(1, 6):
         data = {
             'corrente': random.uniform(0.0, 60.0),
             'dataLeitura': datetime.now().strftime("%Y-%m-%d"),
