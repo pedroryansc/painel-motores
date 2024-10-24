@@ -11,20 +11,20 @@
         <!-- Styles -->
         @vite(['resources/css/app.scss'])
     </head>
-    <body>
+    <body class="bg-light">
 
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-              <span class="navbar-brand mb-0 h1">Navbar</span>
+        <nav class="navbar bg-white">
+            <div class="container-fluid justify-content-center">
+                <span class="navbar-brand m-0">
+                    <img src="{{ asset('imgs/logo.png') }}" height="45">
+                </span>
             </div>
         </nav>
-
-        <main>
+        <main class="container">
             @hasSection ('body')
                 @yield('body')
             @endif
         </main>
-
 
         <!-- Script -->
         @vite(['resources/js/app.js'])
