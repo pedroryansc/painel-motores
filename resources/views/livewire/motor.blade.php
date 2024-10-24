@@ -14,5 +14,5 @@
             <span class="badge text-bg-secondary text-wrap">Nenhum registro</span>
     @endswitch
     </p>
-    <p>Empresa: <span class="fw-semibold">{{ $dadosLeitura->motor->empresa->nome }}</span></p>
+    <p>Empresa: <span class="fw-semibold">{{ $motor->empresa->nome }}</span></p>
 </div>
