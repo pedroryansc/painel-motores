@@ -1,10 +1,7 @@
 <div wire:poll.5s>
     <h1>Motores</h1>
     <br>
-    @foreach($empresas as $empresa)
-        <h3>Empresa {{ $empresa->nome }}</h3>
-        @foreach($empresa->motor as $motor)
-            <p> - <a href="/motor/{{$motor->id}}">{{ $motor->descricao }}: {{ $this->estaRespondendo($motor->id) }}</a></p>
-        @endforeach
+    @foreach ($motores as $motor)
+        <a href="{{ route('motor', $motor->id) }}" wire:navigate>Motor {{ $motor->id }}</a> Corrente: {{ $this->estaRespondendo($motor) }} <br>
     @endforeach
 </div>

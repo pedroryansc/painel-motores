@@ -13,7 +13,18 @@
     </head>
     <body>
 
-        <button class="btn btn-success">Botão</button>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <span class="navbar-brand mb-0 h1">Navbar</span>
+            </div>
+        </nav>
+
+        <main>
+            @hasSection ('body')
+                @yield('body')
+            @endif
+        </main>
+
 
         <!-- Script -->
         @vite(['resources/js/app.js'])

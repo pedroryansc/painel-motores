@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Empresa;
+use App\Models\Motor;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('app');
+    return view('empresas', ['empresas' => Empresa::all()]);
 });
+
+Route::get("/motor/{motor}", function(Motor $motor){
+    return view("livewire.motor", ["motor" => $motor]);
+})->name('motor');

@@ -9,10 +9,15 @@ use Livewire\Component;
 
 class Motores extends Component
 {
+    public $empresa;
 
-    public function estaRespondendo($id)
+    public function estaRespondendo($motor)
     {
-        $leitura = DadosLeitura::where('motor_id', $id)->latest()->first();
+        $leitura = $motor->dadosLeitura->last();
+
+        if (!$leitura) {
+            return "Nenhuma leitura";
+        }
         
         $tempo = strtotime($leitura->dataLeitura." ".$leitura->horaLeitura);
 
@@ -27,6 +32,6 @@ class Motores extends Component
 
     public function render()
     {
-        return view('livewire.motores', ["empresas" => Empresa::all()]);
+        return view('livewire.motores', ["motores" => $this->empresa->motor]);
     }
 }
