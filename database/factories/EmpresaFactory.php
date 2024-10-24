@@ -18,7 +18,7 @@ class EmpresaFactory extends Factory
     {
         return [
             'nome' => 'Artnova Industria Artefatos Cimento Ltda',
-            'cnpj' => '26498992000112'
+            'cnpj' => fake()->unique()->numerify('##############')
         ];
     }
 }

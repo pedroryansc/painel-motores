@@ -13,14 +13,16 @@
     </head>
     <body class="bg-light">
 
-        <nav class="navbar bg-white">
+        <nav class="navbar bg-white shadow-sm">
             <div class="container-fluid justify-content-center">
                 <span class="navbar-brand m-0">
-                    <img src="{{ asset('imgs/logo.png') }}" height="45">
+                    <a href="https://rioar.ind.br">
+                        <img src="{{ asset('imgs/logo.png') }}" height="45">
+                    </a>
                 </span>
             </div>
         </nav>
-        <main class="container">
+        <main class="container p-3">
             @hasSection ('body')
                 @yield('body')
             @endif

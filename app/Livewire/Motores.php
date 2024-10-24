@@ -16,18 +16,21 @@ class Motores extends Component
         $leitura = $motor->dadosLeitura->last();
 
         if (!$leitura) {
-            return "Nenhuma leitura";
+            return json_encode(['status' => 3]);
         }
         
         $tempo = strtotime($leitura->dataLeitura." ".$leitura->horaLeitura);
 
         $diferenca = time() - $tempo;
 
-        if($diferenca <= 15)
-            return "Respondendo: ".$diferenca;
-        else
-            return "Não está respondendo: ".$diferenca;
-        
+        if($diferenca <= 15) {
+            if ($leitura->corrente > 50) {
+                return json_encode(['status' => 2]);
+            }
+            return json_encode(['status' => 1]);
+        } else {
+            return json_encode(['status' => 0]);
+        }
     }
 
     public function render()
