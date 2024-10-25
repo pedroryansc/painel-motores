@@ -17,6 +17,6 @@ class DadosLeitura extends Model
     ];
 
     function motor() {
-        $this->belongsTo(Motor::class);
+        return $this->belongsTo(Motor::class);
     }
 }

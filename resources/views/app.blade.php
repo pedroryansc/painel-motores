@@ -11,9 +11,22 @@
         <!-- Styles -->
         @vite(['resources/css/app.scss'])
     </head>
-    <body>
+    <body class="bg-light">
 
-        <button class="btn btn-success">Botão</button>
+        <nav class="navbar bg-white shadow-sm">
+            <div class="container-fluid justify-content-center">
+                <span class="navbar-brand m-0">
+                    <a href="https://rioar.ind.br">
+                        <img src="{{ asset('imgs/logo.png') }}" height="45">
+                    </a>
+                </span>
+            </div>
+        </nav>
+        <main class="container p-3">
+            @hasSection ('body')
+                @yield('body')
+            @endif
+        </main>
 
         <!-- Script -->
         @vite(['resources/js/app.js'])

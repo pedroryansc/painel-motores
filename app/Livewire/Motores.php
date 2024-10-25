@@ -9,24 +9,32 @@ use Livewire\Component;
 
 class Motores extends Component
 {
+    public $empresa;
 
-    public function estaRespondendo($id)
+    public function estaRespondendo($motor)
     {
-        $leitura = DadosLeitura::where('motor_id', $id)->latest()->first();
+        $leitura = $motor->dadosLeitura->last();
+
+        if (!$leitura) {
+            return json_encode(['status' => 3]);
+        }
         
         $tempo = strtotime($leitura->dataLeitura." ".$leitura->horaLeitura);
 
         $diferenca = time() - $tempo;
 
-        if($diferenca <= 15)
-            return "Respondendo: ".$diferenca;
-        else
-            return "Não está respondendo: ".$diferenca;
-        
+        if($diferenca <= 15) {
+            if ($leitura->corrente > 50) {
+                return json_encode(['status' => 2]);
+            }
+            return json_encode(['status' => 1]);
+        } else {
+            return json_encode(['status' => 0]);
+        }
     }
 
     public function render()
     {
-        return view('livewire.motores', ["empresas" => Empresa::all()]);
+        return view('livewire.motores', ["motores" => $this->empresa->motor]);
     }
 }
